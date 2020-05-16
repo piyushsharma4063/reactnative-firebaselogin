@@ -1,0 +1,17 @@
+{
+  "name": "rnFirebaseAuth",
+  "displayName": "rnFirebaseAuth",
+  "expo": {
+    "name": "rnFirebaseAuth",
+    "slug": "rnFirebaseAuth",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
