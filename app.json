@@ -5,6 +5,13 @@
     "name": "rnFirebaseAuth",
     "slug": "rnFirebaseAuth",
     "version": "1.0.0",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ios"
+    },
+    "android": {
+      "package": "com.rnfirebaseauth"
+    },
     "platforms": [
       "ios",
       "android",

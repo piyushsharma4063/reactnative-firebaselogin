@@ -1,36 +1,77 @@
 import * as React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-});
+import Login from './components/login';
+import Signup from './components/signup';
+import Dashboard from './components/dashboard';
+import AddUserScreen from './components/AddUserScreen';
+import UserDetailScreen from './components/UserDetailScreen';
+import UserScreen from './components/UserScreen';
 
-export default function App() {
+
+const Stack = createStackNavigator();
+
+function MyStack() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>To get started, edit App.js</Text>
-      <Text style={styles.instructions}>{instructions}</Text>
-    </View>
+    <Stack.Navigator
+      initialRouteName="Signup"
+      screenOptions={{
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#3740FE',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+      <Stack.Screen 
+        name="Signup" 
+        component={Signup} 
+        options={{ title: 'Signup' }}
+      />       
+      <Stack.Screen 
+        name="Login" 
+        component={Login} 
+        options={
+          {title: 'Login'},
+          {headerLeft: null} 
+        }
+      />
+      <Stack.Screen 
+       name="Dashboard" 
+       component={Dashboard} 
+       options={
+         { title: 'Dashboard' },
+         {headerLeft: null} 
+       }
+      />
+      <Stack.Screen 
+        name="AddUserScreen" 
+        component={AddUserScreen} 
+        options={{ title: 'Add User' }}
+      />
+      <Stack.Screen 
+        name="UserScreen" 
+        component={UserScreen} 
+        options={{ title: 'Users List' }}
+      />
+      <Stack.Screen 
+       name="UserDetailScreen" 
+       component={UserDetailScreen} 
+       options={{ title: 'User Detail' }}
+      />
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
+}
+
+
